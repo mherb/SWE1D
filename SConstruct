@@ -57,6 +57,19 @@ env = Environment()
 # eclipse specific flag
 env.Append(CCFLAGS=['-fmessage-length=0'])
 
+# Pass optimize=<level> to set optimization level
+# by default level 0 (no optimzation) is used
+if ARGUMENTS.get('optimize', 0):
+    env.Append(CCFLAGS=['-O' + ARGUMENTS.get('optimize', '0')])
+
+# Pass debug=1 for a debug build
+if ARGUMENTS.get('debug', 0):
+    env.Append(CCFLAGS=['-g'])
+
+# Pass compiler=<name> to use <name> as compiler instead of g++
+if ARGUMENTS.get('compiler', 0):
+    env['CXX'] = ARGUMENTS.get('compiler')
+
 # Add source directory to include path (important for subdirectories)
 env.Append(CPPPATH=['.'])
 
