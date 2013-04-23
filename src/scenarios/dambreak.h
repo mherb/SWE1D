@@ -57,12 +57,17 @@ public:
 	/**
 	 * @return Initial water height at pos
 	 */
-	unsigned int getHeight(unsigned int pos)
+	T getHeight(unsigned int pos)
 	{
 		if (pos <= m_size/2)
-			return 253;
+			return 14;
+		return 3.5;
+	}
 
-		return 250;
+	T getMomentum(unsigned int pos) {
+		if( pos <= m_size / 2)
+			return 0;
+		return 0.7;	
 	}
 
 	/**
