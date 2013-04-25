@@ -45,38 +45,37 @@ namespace scenarios
 class DamBreak
 {
 private:
-	/** Number of cells */
-	const unsigned int m_size;
+    /** Number of cells */
+    const unsigned int m_size;
 
 public:
-	DamBreak(unsigned int size)
-		: m_size(size)
-	{
-	}
+    DamBreak(unsigned int size)
+        : m_size(size)
+    {
+    }
 
-	/**
-	 * @return Initial water height at pos
-	 */
-	T getHeight(unsigned int pos)
-	{
-		if (pos <= m_size/2)
-			return 14;
-		return 3.5;
-	}
+    /**
+     * @return Initial water height at pos
+     */
+    T getHeight(unsigned int pos)
+    {
+        if (pos <= m_size/2)
+            return 253.0;
+        return 250.0;
+    }
 
-	T getMomentum(unsigned int pos) {
-		if( pos <= m_size / 2)
-			return 0;
-		return 0.7;	
-	}
+    T getMomentum(unsigned int pos)
+    {
+        return 0.0;
+    }
 
-	/**
-	 * @return Cell size of one cell (= domain size/number of cells)
-	 */
-	T getCellSize()
-	{
-		return 1000.f / m_size;
-	}
+    /**
+     * @return Cell size of one cell (= domain size/number of cells)
+     */
+    T getCellSize()
+    {
+        return 1000.f / m_size;
+    }
 };
 
 }
