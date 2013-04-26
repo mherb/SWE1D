@@ -39,6 +39,7 @@
 #include "scenarios/dambreak.h"
 #include "scenarios/ShockShock.h"
 #include "scenarios/RareRare.h"
+#include "scenarios/Village.h"
 //#include "writer/ConsoleWriter.h"
 #include "writer/VtkWriter.h"
 #include "tools/args.h"
@@ -51,11 +52,11 @@ int main(int argc, char** argv)
 	tools::Args args(argc, argv);
 
 	// Scenarios
-	//Choose scenario here
-
-		scenarios::DamBreak scenario(args.size());
-		//scenarios::ShockShock scenario(args.size());
-		//scenarios::RareRare scenario(args.size());
+	// Choose scenario here
+    scenarios::Village scenario(args.size());
+    // scenarios::DamBreak scenario(args.size());
+	// scenarios::ShockShock scenario(args.size());
+	// scenarios::RareRare scenario(args.size());
 
 	// Allocate memory
 	// Water height
@@ -69,7 +70,6 @@ int main(int argc, char** argv)
 
 	for (unsigned int i = 0; i < args.size()+2; i++)
 		hu[i] = scenario.getMomentum(i);
-	//memset(hu, 0, sizeof(T)*(args.size()+2));
 
 	// Create a writer that is responsible printing out values
 	//writer::ConsoleWriter writer;
