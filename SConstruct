@@ -52,7 +52,7 @@ print ''
 import os
 
 # Scons environement
-env = Environment()
+env = Environment(tools=['default','cxxtest'])
 
 # eclipse specific flag
 env.Append(CCFLAGS=['-fmessage-length=0'])
@@ -71,13 +71,16 @@ if ARGUMENTS.get('compiler', 0):
     env['CXX'] = ARGUMENTS.get('compiler')
 
 # Add source directory to include path (important for subdirectories)
-env.Append(CPPPATH=['.'])
+env.Append(CPPPATH=['.','#src'])
 
 # Output directory
 buildDir = '#build'
+srcDir = '#src'
+testsDir = '#tests'
 
 # Generate the program name
 programName = 'SWE1D'
+testName = programName+'test'
 
 # Get the source code files
 Export('env')
@@ -89,3 +92,14 @@ Import('env')
 
 # Build the program
 env.Program(os.path.join(buildDir, programName), env.srcFiles)
+
+# Build unit tests
+# TODO: implement this in a cleaner way, maybe move to SConscript file?
+env['CXXTEST_SKIP_ERRORS'] = True
+testsFiles = [
+    os.path.join(testsDir, 'WavePropagationTest.h'),
+    env.Object(os.path.join(srcDir,'WavePropagation.cpp'))
+]
+tests = env.CxxTest(os.path.join(buildDir, testName), testsFiles)
+
+Default(program)

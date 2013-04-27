@@ -1,5 +1,12 @@
+# General
+*~
+*.pyc
+
 # Builds
 build/
+*.o
+tests/**.cpp
+tests/**/*.cpp
 
 # Eclipse files/folders
 .cproject
