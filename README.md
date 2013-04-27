@@ -25,6 +25,12 @@ The default build command (".")
     
 will build the executable `build/SWE1D`
 
+## Testing
+
+Unit tests can be built and run using
+
+    scons check
+
 ## Running
 
 See `./build/SWE1D --help` for runtime options
