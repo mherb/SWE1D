@@ -64,9 +64,12 @@ public:
         return 250.0;
     }
 
+    /**
+     * @return Initial momentum at pos
+     */
     T getMomentum(unsigned int pos)
     {
-        return 0.0;
+            return 0.0;
     }
 
     /**

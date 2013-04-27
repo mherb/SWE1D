@@ -65,6 +65,9 @@ public:
 		return 25;
 	}
 
+	/**
+	 * @return Initial momentum at pos
+	 */
 	T getMomentum(unsigned int pos) {
 		if( pos <= m_size / 2)
 			return 10;
@@ -82,4 +85,4 @@ public:
 
 }
 
-#endif /* SCENARIOS_DAMBREAK_H_ */
+#endif /* SCENARIOS_SHOCKSHOCK_H_ */
