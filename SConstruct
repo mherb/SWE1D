@@ -91,7 +91,7 @@ SConscript(os.path.join('src', 'SConscript'),
 Import('env')
 
 # Build the program
-env.Program(os.path.join(buildDir, programName), env.srcFiles)
+program = env.Program(os.path.join(buildDir, programName), env.srcFiles)
 
 # Build unit tests
 # TODO: implement this in a cleaner way, maybe move to SConscript file?
