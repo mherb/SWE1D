@@ -66,7 +66,7 @@ public:
 	}
 
 	/**
-	 * @return Initial water height at pos
+	 * @return Initial momentum at pos
 	 */
 	T getMomentum(unsigned int pos) {
 		if( pos <= m_size / 2)
