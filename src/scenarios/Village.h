@@ -13,15 +13,15 @@ private:
 	/** Number of cells */
 	const unsigned int m_size;
     
-    /**Dam position */
-    unsigned int m_dam_pos;
+        /**Dam position */
+        unsigned int m_dam_pos;
 public:
 	Village(unsigned int size)
 		: m_size(size)
 	{
-        // at 5k (30k/6)
-        // | <- 5km -> [dam] <- 25 km -> [village]
-        m_dam_pos = m_size/6;
+        // Dam at 25k (50k/2)
+        // | <- 25km -> [dam] <- 25 km -> [village]
+        m_dam_pos = m_size/2;
 	}
 
 	/**
@@ -34,6 +34,9 @@ public:
 		return 3.5;
 	}
 
+        /**
+         * @return Initial momentum at pos
+         */
 	T getMomentum(unsigned int pos) {
 		if( pos <= m_dam_pos)
 			return 0;
@@ -45,7 +48,7 @@ public:
 	 */
 	T getCellSize()
 	{
-		return 30000.f / m_size;
+		return 50000.f / m_size;
 	}
 };
 
