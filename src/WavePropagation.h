@@ -75,6 +75,7 @@ class WavePropagation
 private:
 	T *m_h;
 	T *m_hu;
+	T *m_b;
 
 	T *m_hNetUpdatesLeft;
 	T *m_hNetUpdatesRight;
@@ -94,9 +95,10 @@ public:
 	 * @param size Domain size (= number of cells) without ghost cells
 	 * @param cellSize Size of one cell
 	 */
-	WavePropagation(T *h, T *hu, unsigned int size, T cellSize)
+	WavePropagation(T *h, T *hu, T *b, unsigned int size, T cellSize)
 		: m_h(h),
 		  m_hu(hu),
+		  m_b(b),
 		  m_size(size),
 		  m_cellSize(cellSize)
 	{

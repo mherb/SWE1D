@@ -53,16 +53,18 @@ int main(int argc, char** argv)
 
 	// Scenarios
 	// Choose scenario here
-    scenarios::Village scenario(args.size());
-    // scenarios::DamBreak scenario(args.size());
-	// scenarios::ShockShock scenario(args.size());
-	// scenarios::RareRare scenario(args.size());
+    		//scenarios::Village scenario(args.size());
+    		// scenarios::DamBreak scenario(args.size());
+			scenarios::ShockShock scenario(args.size());
+			// scenarios::RareRare scenario(args.size());
 
 	// Allocate memory
 	// Water height
 	T *h = new T[args.size()+2];
 	// Momentum
 	T *hu = new T[args.size()+2];
+	// Bathymetry
+	T *b = new T[args.size()+2];
 
 	// Initialize water height and momentum
 	for (unsigned int i = 0; i < args.size()+2; i++)
@@ -71,12 +73,15 @@ int main(int argc, char** argv)
 	for (unsigned int i = 0; i < args.size()+2; i++)
 		hu[i] = scenario.getMomentum(i);
 
+	for (unsigned int i = 0; i < args.size()+2; i++)
+		b[i] = scenario.getBathymetry(i);
+
 	// Create a writer that is responsible printing out values
 	//writer::ConsoleWriter writer;
 	writer::VtkWriter writer("swe1d", scenario.getCellSize());
 
 	// Helper class computing the wave propagation
-	WavePropagation wavePropagation(h, hu, args.size(), scenario.getCellSize());
+	WavePropagation wavePropagation(h, hu, b, args.size(), scenario.getCellSize());
 
 	// Write initial data
 	tools::Logger::logger.info("Initial data");
@@ -84,7 +89,7 @@ int main(int argc, char** argv)
 	// Current time of simulation
 	T t = 0;
 
-	writer.write(t, h, hu, args.size());
+	writer.write(t, h, hu, b, args.size());
 
 	for (unsigned int i = 0; i < args.timeSteps(); i++) {
 		// Do one time step
@@ -104,12 +109,13 @@ int main(int argc, char** argv)
 		t += maxTimeStep;
 
 		// Write new values
-		writer.write(t, h, hu, args.size());
+		writer.write(t, h, hu, b, args.size());
 	}
 
 	// Free allocated memory
 	delete [] h;
 	delete [] hu;
+	delete [] b;
 
 	return 0;
 }
