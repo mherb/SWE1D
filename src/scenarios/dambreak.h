@@ -38,19 +38,16 @@
 #define SCENARIOS_DAMBREAK_H_
 
 #include "types.h"
+#include "Scenario.h"
 
 namespace scenarios
 {
 
-class DamBreak
+class DamBreak : public Scenario
 {
-private:
-    /** Number of cells */
-    const unsigned int m_size;
-
 public:
     DamBreak(unsigned int size)
-        : m_size(size)
+        : Scenario(size)
     {
     }
 
@@ -70,14 +67,6 @@ public:
     T getMomentum(unsigned int pos)
     {
             return 0.0;
-    }
-
-    /**
-     * @return Cell size of one cell (= domain size/number of cells)
-     */
-    T getCellSize()
-    {
-        return 1000.f / m_size;
     }
 };
 
