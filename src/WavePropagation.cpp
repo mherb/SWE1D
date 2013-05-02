@@ -72,9 +72,31 @@ void WavePropagation::updateUnknowns(T dt)
 	}
 }
 
-void WavePropagation::setOutflowBoundaryConditions()
+void WavePropagation::setOutflowBoundaryConditions(unsigned int boundary)
 {
-	m_h[0] = m_h[1]; m_h[m_size+1] = m_h[m_size];
-	m_hu[0] = m_hu[1]; m_hu[m_size+1] = -m_hu[m_size];	
-				
+    // Left boundary
+    if(boundary == BOUNDARY_BOTH || boundary == BOUNDARY_LEFT) {
+        // outflow boundary: wet cell
+        m_h[0] = m_h[1];
+        m_hu[0] = m_hu[1];
+        m_b[0] = m_b[1];
+    } else {
+        // reflecting boundary: dry cell
+        m_h[0] = 0.0;
+        m_hu[0] = 0.0;
+        m_b[0] = 1.0;
+    }
+    
+    // Right boundary
+    if(boundary == BOUNDARY_BOTH || boundary == BOUNDARY_RIGHT) {
+        // outflow boundary: wet cell
+        m_h[m_size+1] = m_h[m_size];
+        m_hu[m_size+1] = m_hu[m_size];
+        m_b[m_size+1] = m_b[m_size];
+    } else {
+        // reflecting boundary: dry cell
+        m_h[m_size+1] = 0.0;
+        m_hu[m_size+1] = 0.0;
+        m_b[m_size+1] = 1.0;
+    }
 }

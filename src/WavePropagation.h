@@ -91,6 +91,12 @@ private:
 	solver::FWave<T> m_solver;
 
 public:
+    
+    const static unsigned int BOUNDARY_NONE  = 0;
+    const static unsigned int BOUNDARY_LEFT  = 1;
+    const static unsigned int BOUNDARY_RIGHT = 2;
+    const static unsigned int BOUNDARY_BOTH  = 3;
+    
 	/**
 	 * @param size Domain size (= number of cells) without ghost cells
 	 * @param cellSize Size of one cell
@@ -133,10 +139,10 @@ public:
 	void updateUnknowns(T dt);
 
 	/**
-	 * Updates h and hu according to the outflow condition to both
-	 * boundaries
+	 * Updates h, hu and b according to the outflow condition to the
+	 * specified boundaries
 	 */
-	void setOutflowBoundaryConditions();
+	void setOutflowBoundaryConditions(unsigned int boundary = BOUNDARY_BOTH);
 };
 
 
