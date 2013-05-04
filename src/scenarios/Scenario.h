@@ -15,7 +15,7 @@ protected:
     const T m_domain;
 
 public:
-    Scenario(unsigned int size, T domain = 1000.f)
+    Scenario(unsigned int size, T domain = 25.f)
         : m_size(size), m_domain(domain)
     {
     }

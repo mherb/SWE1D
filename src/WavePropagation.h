@@ -142,7 +142,7 @@ public:
 	 * Updates h, hu and b according to the outflow condition to the
 	 * specified boundaries
 	 */
-	void setOutflowBoundaryConditions(unsigned int boundary = BOUNDARY_BOTH);
+	void setOutflowBoundaryConditions(unsigned int boundary = BOUNDARY_NONE);
 };
 
 
