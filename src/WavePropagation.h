@@ -92,9 +92,13 @@ private:
 
 public:
     
+    /** Constant specifying neither boundary */
     const static unsigned int BOUNDARY_NONE  = 0;
+    /** Constant specifying only the left boundary */
     const static unsigned int BOUNDARY_LEFT  = 1;
+    /** Constant specifying only the right boundary */
     const static unsigned int BOUNDARY_RIGHT = 2;
+    /** Constant specifying both boundaries (left and right) */
     const static unsigned int BOUNDARY_BOTH  = 3;
     
 	/**
@@ -140,9 +144,13 @@ public:
 
 	/**
 	 * Updates h, hu and b according to the outflow condition to the
-	 * specified boundaries
+	 * specified boundaries. Boundaries that are not set as *outflow* will
+     * be set to *reflecting* conditions
+     *
+     * @param[in] boundary  The boundaries on which to set outflow (e.g. both sides or only left side). 
+     *                      Valid options are BOUNDARY_BOTH, BOUNDARY_NONE, BOUNDARY_LEFT and BOUNDARY_RIGHT
 	 */
-	void setOutflowBoundaryConditions(unsigned int boundary = BOUNDARY_NONE);
+	void setOutflowBoundaryConditions(unsigned int boundary = BOUNDARY_BOTH);
 };
 
 
