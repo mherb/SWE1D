@@ -8,6 +8,9 @@
 namespace scenarios
 {
 
+/**
+* Scenario of a rare-rare riemann problem
+*/
 class RareRare : public Scenario
 {
 public:

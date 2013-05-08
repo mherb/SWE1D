@@ -8,6 +8,9 @@
 namespace scenarios
 {
 
+/**
+* Scenario causing a supercritical state (Froude number > 1)
+*/
 class Supercritical : public Scenario
 {
 public:

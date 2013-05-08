@@ -28,6 +28,12 @@ protected:
     }
 
 public:
+    /**
+     * Scenario Constructor
+     * 
+     * @param size The number of cells (excluding ghost cells)
+     * @param domain The computational domain
+     */
     Scenario(unsigned int size, T domain = 1000.f)
         : m_size(size), m_domain(domain)
     {

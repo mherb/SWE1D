@@ -8,6 +8,9 @@
 namespace scenarios
 {
 
+/**
+ * Scenario of a shock-shock riemann problem
+ */
 class ShockShock : public Scenario
 {
 public:
