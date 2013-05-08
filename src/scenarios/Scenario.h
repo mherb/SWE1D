@@ -13,9 +13,22 @@ protected:
     const unsigned int m_size;
     /** Domain size */
     const T m_domain;
+    /** 
+     * Maps an external cell position to an internal, continuous position
+     * in the domain size (0,*domain*).
+     *
+     * External (cell) position 0 maps to domain position 0
+     * External (cell) position size+2 maps to domain position *domain*
+     *
+     * @param pos The external cell position
+     * @return Internal position in the domain
+     */
+    T internalPosition(unsigned int pos) {
+        return pos * (m_domain / (m_size+2));
+    }
 
 public:
-    Scenario(unsigned int size, T domain = 25.f)
+    Scenario(unsigned int size, T domain = 1000.f)
         : m_size(size), m_domain(domain)
     {
     }

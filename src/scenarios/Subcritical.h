@@ -12,36 +12,32 @@ class Subcritical : public Scenario
 {
 public:
 	Subcritical(unsigned int size)
-		: Scenario(size)
+		: Scenario(size, 25.f)
 	{
 	}
-
-
+    
 	/**
 	 * @return Bathymetry at pos
 	 */
 	T getBathymetry(unsigned int pos) {
-		if( pos > 8 && pos < 12)
-			return -1.8f-(0.05f*(pos-10.0f)*(pos-10.0f));
+        T intPos = internalPosition(pos);
+		if( intPos > 8 && intPos < 12)
+			return -1.8f - (0.05f * ( intPos - 10.0f ) * ( intPos - 10.0f ) );
 		return -2;
 	}	
 
 	/**
 	 * @return Initial water height at pos
 	 */
-	T getHeight(unsigned int pos)
-	{
-		if (pos >= 0 && pos <= 25)
-			return -getBathymetry(pos);
-
+	T getHeight(unsigned int pos) {
+		return -getBathymetry(pos);        
 	}
 
 	/**
 	 * @return Initial momentum at pos
 	 */
 	T getMomentum(unsigned int pos) {
-		if (pos >= 0 && pos <= 25)
-			return 4.42f;
+		return 4.42f;
 	}
 };
 
