@@ -24,7 +24,7 @@ protected:
      * @return Internal position in the domain
      */
     T internalPosition(unsigned int pos) {
-        return pos * (m_domain / (m_size+2));
+        return (T)pos * (m_domain / (T)(m_size+2));
     }
 
 public:
