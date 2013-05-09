@@ -23,19 +23,23 @@ class WavePropagationTest : public CxxTest::TestSuite {
         	T *h = new T[SIZE+2];
         	// Momentum
         	T *hu = new T[SIZE+2];
+        	// Bathymetry
+        	T *b = new T[SIZE+2];
             
             // Set initial values (left side)
             for(int i = 0; i <= SIZE/2; i++) {
                 h[i] = h_l;
                 hu[i] = hu_l;
+                b[i] = -1.0;
             }
             // Set initial values (right side)
             for(int i = SIZE/2+1; i < SIZE+2; i++) {
                 h[i] = h_r;
                 hu[i] = hu_r;
+                b[i] = -1.0;
             }
             
-            WavePropagation wavePropagation(h, hu, SIZE, 10.0/SIZE);
+            WavePropagation wavePropagation(h, hu, b, SIZE, 10.0/SIZE);
             
             // Run for certain period
             for(int t = 0; t < TIMESTEPS; t++) {
