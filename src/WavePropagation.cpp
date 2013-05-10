@@ -69,6 +69,12 @@ void WavePropagation::updateUnknowns(T dt)
 	for (unsigned int i = 1; i < m_size+1; i++) {
         m_h[i] -=  dt/m_cellSize * (m_hNetUpdatesRight[i-1] + m_hNetUpdatesLeft[i]);
         m_hu[i] -= dt/m_cellSize * (m_huNetUpdatesRight[i-1] + m_huNetUpdatesLeft[i]);
+        
+        // Catch negative heights
+        if(m_h[i] < 0.0) {
+            m_h[i] = 0.0;
+            m_hu[i] = 0.0;
+        }
 	}
 }
 
