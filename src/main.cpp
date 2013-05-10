@@ -40,6 +40,7 @@
 #include "scenarios/ShockShock.h"
 #include "scenarios/RareRare.h"
 #include "scenarios/Village.h"
+#include "scenarios/ReflectedShock.h"
 #include "scenarios/Supercritical.h"
 #include "scenarios/Subcritical.h"
 //#include "writer/ConsoleWriter.h"
@@ -55,12 +56,14 @@ int main(int argc, char** argv)
 
 	// Scenarios
 	// Choose scenario here
-    	//scenarios::Village scenario(args.size());
-    	// scenarios::DamBreak scenario(args.size());
-		//scenarios::ShockShock scenario(args.size());
-		//scenarios::RareRare scenario(args.size());
-		//scenarios::Supercritical scenario(args.size());
-		scenarios::Subcritical scenario(args.size());
+    // scenarios::Village scenario(args.size());
+    // scenarios::DamBreak scenario(args.size());
+    // scenarios::ShockShock scenario(args.size());
+    // scenarios::RareRare scenario(args.size());
+    scenarios::ReflectedShock scenario(args.size());
+    // scenarios::Supercritical scenario(args.size());
+    // scenarios::Subcritical scenario(args.size());
+    
 
 	// Allocate memory
 	// Water height
