@@ -92,6 +92,7 @@ private:
 
 public:
     
+    // TODO: Don't use integer constants but create a type for that
     /** Constant specifying neither boundary */
     const static unsigned int BOUNDARY_NONE  = 0;
     /** Constant specifying only the left boundary */

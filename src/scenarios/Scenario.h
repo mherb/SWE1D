@@ -2,6 +2,7 @@
 #define SCENARIOS_SCENARIO_H_
 
 #include "types.h"
+#include "WavePropagation.h"
 
 namespace scenarios
 {
@@ -69,6 +70,14 @@ public:
     virtual T getCellSize()
     {
         return m_domain / m_size;
+    }
+    
+    /**
+     * @return Constant indicating on which boundaries to set outflow conditions
+     */
+    virtual unsigned int getOutflowBoundaries()
+    {
+        return WavePropagation::BOUNDARY_BOTH;
     }
 };
 

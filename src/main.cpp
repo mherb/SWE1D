@@ -71,14 +71,14 @@ int main(int argc, char** argv)
 	T *b = new T[args.size()+2];
 
 	// Initialize water height and momentum
-	for (unsigned int i = 0; i < args.size()+2; i++)
+	for (unsigned int i = 0; i < args.size()+2; i++) {
 		h[i] = scenario.getHeight(i);
-
-	for (unsigned int i = 0; i < args.size()+2; i++)
 		hu[i] = scenario.getMomentum(i);
-
-	for (unsigned int i = 0; i < args.size()+2; i++)
 		b[i] = scenario.getBathymetry(i);
+	}
+    
+    // Get the outflow boundaries from scenario
+    unsigned int outflowBoundaries = scenario.getOutflowBoundaries();
 
 	// Create a writer that is responsible printing out values
 	//writer::ConsoleWriter writer;
@@ -101,7 +101,7 @@ int main(int argc, char** argv)
 				<< " at time " << t << std::endl;
 
 		// Update boundaries
-		wavePropagation.setOutflowBoundaryConditions();
+		wavePropagation.setOutflowBoundaryConditions(outflowBoundaries);
 
 		// Compute numerical flux on each edge
 		T maxTimeStep = wavePropagation.computeNumericalFluxes();
