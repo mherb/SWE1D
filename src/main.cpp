@@ -40,6 +40,7 @@
 #include "scenarios/ShockShock.h"
 #include "scenarios/RareRare.h"
 #include "scenarios/Village.h"
+#include "scenarios/Bathymetry.h"
 #include "scenarios/ReflectedShock.h"
 #include "scenarios/Supercritical.h"
 #include "scenarios/Subcritical.h"
@@ -60,9 +61,11 @@ int main(int argc, char** argv)
     // scenarios::DamBreak scenario(args.size());
     // scenarios::ShockShock scenario(args.size());
     // scenarios::RareRare scenario(args.size());
-    scenarios::ReflectedShock scenario(args.size());
+	   scenarios::Bathymetry scenario(args.size());
+    // scenarios::ReflectedShock scenario(args.size());
     // scenarios::Supercritical scenario(args.size());
     // scenarios::Subcritical scenario(args.size());
+
     
 
 	// Allocate memory
