@@ -16,7 +16,7 @@ class ReflectedShock : public Scenario
 {
 public:
 	ReflectedShock(unsigned int size)
-		: Scenario(size)
+		: Scenario(size, 100.0)
 	{
 	}
     
@@ -25,14 +25,22 @@ public:
      */
     T getHeight(unsigned int pos)
     {
-    	return 25;
+    	return 25.0;
     }
 
     /**
      * @return Initial momentum at pos
      */
     T getMomentum(unsigned int pos) {
-    	return 10;	
+    	return 10.0;
+    }
+    
+    /**
+     * @return Bathymetry at pos
+     */
+    virtual T getBathymetry(unsigned int pos)
+    {
+            return -getHeight(pos);
     }
     
     unsigned int getOutflowBoundaries()
