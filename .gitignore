@@ -16,3 +16,5 @@ tests/**/*.cpp
 
 # Scons database
 .sconsign.dblite
+
+/doc
